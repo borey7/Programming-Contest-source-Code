@@ -1,3 +1,11 @@
+/*
+	used:
+		-	get input as string: getline (use getchar() to prevent previous char)
+		-	string empty check
+		-	concate char to the end of string 	
+*/
+
+
 #include <iostream>
 #include <string>
 
