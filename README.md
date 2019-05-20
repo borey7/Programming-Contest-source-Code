@@ -4,4 +4,4 @@ Collections from
 - UVa
 - CodeChef
 - Code Jam
-- Hacker Rank
+- ICPC
