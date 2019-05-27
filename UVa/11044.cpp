@@ -6,15 +6,16 @@ bool isFloat(double n) {
 	return (n - (int)n > 0);
 }
 
+int getMinOnLine(int l) {	
+
+	double num = (l - 2) / 3.0;
+	
+	return (int)(isFloat(num) ? num + 1 : num);
+}
+
 int getMinSonarBeam(int n, int m) {
 	
-	double r = (n - 2) / 3.0;
-	int row = (int)(isFloat(r) ? r + 1 : r);
-	
-	double c = (m - 2) / 3.0;
-	int col = (int)(isFloat(c) ? c + 1 : c);
-	
-	return (row * col);
+	return (getMinOnLine(n) * getMinOnLine(m));
 }
 
 int main() {
