@@ -4,6 +4,67 @@
 
 using namespace std;
 
+int getJ(int list[], int n, int i)
+{
+    int j = i, min = list[i];
+    for (int idx = i; idx <= n - 1; idx++)
+    {
+        if (list[idx] < min)
+        {
+            min = list[idx];
+            j = idx;
+        }
+    }
+
+    return j;
+}
+
+int getCost(int list[], int n)
+{
+    int cost = 0;
+    int newList[n];
+    for (int idx = 0; idx < n; idx++)
+    {
+        newList[idx] = list[idx];
+    }
+    // cout << "----------- new list > ";
+    // for (int idx = 0; idx < n; idx++)
+    // {
+    //     cout << newList[idx] << " ";
+    // }
+    for (int i = 0; i < n - 1; i++)
+    {
+        int j = getJ(newList, n, i);
+
+        // reverse from index of i to j
+        // cout << "\n=== reverse " << i << " to " << j << endl;
+        for (int idx = 0; idx <= (j - i) / 2; idx++)
+        {
+            int temp = newList[i + idx];
+            newList[i + idx] = newList[j - idx];
+            newList[j - idx] = temp;
+            // cout << (i + idx) << " and " << (j - idx) << " : " << newList[i + idx] << " < - > " << newList[j - idx] << endl;
+            // cout << "          result: ";
+            // for (int aa = 0; aa < n; aa++)
+            // {
+            //     cout << newList[aa] << " ";
+            // }
+            // cout << endl;
+        }
+
+        // cout << "\n-----------> ";
+        // for (int idx = 0; idx < n; idx++)
+        // {
+        //     cout << newList[idx] << " ";
+        // }
+        // cout << endl;
+
+        cost += (j + 1) - (i + 1) + 1;
+    }
+
+    return cost;
+}
+
 void showAllPossible(int n)
 {
     int idx[] = {0, 0, 0, 0, 0, 0, 0, 0};
@@ -89,92 +150,32 @@ void showAllPossible(int n)
         {
             for (int j = 0; j < n; j++)
                 cout << arr2[i][j] << " ";
-            cout << endl;
+
+            cout << " cost:" << getCost(arr2[i], n) << endl;
         }
     }
     if (n == 3)
     {
         cout << " n: " << n << " -----------";
-        for (int i = 0; i < 1 * n + 1; i++)
+        for (int i = 0; i < 1 * 2 * n + 1; i++)
         {
             for (int j = 0; j < n; j++)
                 cout << arr3[i][j] << " ";
-            cout << endl;
+            cout << " cost:" << getCost(arr3[i], n) << endl;
         }
     }
     if (n == 4)
     {
         cout << " n: " << n << " -----------";
-        for (int i = 0; i < 1 * n + 1; i++)
+        for (int i = 0; i < 1 * 2 * 3 * n + 1; i++)
         {
             for (int j = 0; j < n; j++)
                 cout << arr4[i][j] << " ";
-            cout << endl;
+            cout << " cost:" << getCost(arr4[i], n) << endl;
         }
     }
     cout
         << n << ": " << count[n] << endl;
-}
-
-int getJ(int list[], int n, int i)
-{
-    int j = i, min = list[i];
-    for (int idx = i; idx <= n - 1; idx++)
-    {
-        if (list[idx] < min)
-        {
-            min = list[idx];
-            j = idx;
-        }
-    }
-
-    return j;
-}
-
-int getCost(int list[], int n)
-{
-    int cost = 0;
-    int newList[n];
-    for (int idx = 0; idx < n; idx++)
-    {
-        newList[idx] = list[idx];
-    }
-    // cout << "----------- new list > ";
-    // for (int idx = 0; idx < n; idx++)
-    // {
-    //     cout << newList[idx] << " ";
-    // }
-    for (int i = 0; i < n - 1; i++)
-    {
-        int j = getJ(newList, n, i);
-
-        // reverse from index of i to j
-        // cout << "\n=== reverse " << i << " to " << j << endl;
-        for (int idx = 0; idx <= (j - i) / 2; idx++)
-        {
-            int temp = newList[i + idx];
-            newList[i + idx] = newList[j - idx];
-            newList[j - idx] = temp;
-            // cout << (i + idx) << " and " << (j - idx) << " : " << newList[i + idx] << " < - > " << newList[j - idx] << endl;
-            // cout << "          result: ";
-            // for (int aa = 0; aa < n; aa++)
-            // {
-            //     cout << newList[aa] << " ";
-            // }
-            // cout << endl;
-        }
-
-        // cout << "\n-----------> ";
-        // for (int idx = 0; idx < n; idx++)
-        // {
-        //     cout << newList[idx] << " ";
-        // }
-        // cout << endl;
-
-        cost += (j + 1) - (i + 1) + 1;
-    }
-
-    return cost;
 }
 
 int main(int argc, char *argv[])
