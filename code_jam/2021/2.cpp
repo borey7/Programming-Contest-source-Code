@@ -4,12 +4,15 @@
 
 using namespace std;
 
-void showAllPossible()
+void showAllPossible(int n)
 {
     int idx[] = {0, 0, 0, 0, 0, 0, 0, 0};
-    int n = 7;
     int arr7[1 * 2 * 3 * 4 * 5 * 6 * n + 1][n];
-    int idx7 = 0;
+    int arr6[1 * 2 * 3 * 4 * 5 * n + 1][n];
+    int arr5[1 * 2 * 3 * 4 * n + 1][n];
+    int arr4[1 * 2 * 3 * n + 1][n];
+    int arr3[1 * 2 * n + 1][n];
+    int arr2[1 * n + 1][n];
     int count[] = {0, 0, 0, 0, 0, 0, 0, 0};
     for (idx[1] = 1; idx[1] <= n; idx[1]++)
     {
@@ -17,31 +20,61 @@ void showAllPossible()
         {
             if (idx[2] == idx[1])
                 continue;
+            if (n == 2)
+            {
+                count[n]++;
+                for (int i = 0; i < n; i++)
+                    arr2[count[n]][i] = idx[i + 1];
+            }
             for (idx[3] = 1; idx[3] <= n; idx[3]++)
             {
                 if (idx[3] == idx[1] || idx[3] == idx[2])
                     continue;
+                if (n == 3)
+                {
+                    count[n]++;
+                    for (int i = 0; i < n; i++)
+                        arr3[count[n]][i] = idx[i + 1];
+                }
                 for (idx[4] = 1; idx[4] <= n; idx[4]++)
                 {
                     if (idx[4] == idx[1] || idx[4] == idx[2] || idx[4] == idx[3])
                         continue;
+                    if (n == 4)
+                    {
+                        count[n]++;
+                        for (int i = 0; i < n; i++)
+                            arr4[count[n]][i] = idx[i + 1];
+                    }
                     for (idx[5] = 1; idx[5] <= n; idx[5]++)
                     {
                         if (idx[5] == idx[1] || idx[5] == idx[2] || idx[5] == idx[3] || idx[5] == idx[4])
                             continue;
+                        if (n == 5)
+                        {
+                            count[n]++;
+                            for (int i = 0; i < n; i++)
+                                arr5[count[n]][i] = idx[i + 1];
+                        }
                         for (idx[6] = 1; idx[6] <= n; idx[6]++)
                         {
                             if (idx[6] == idx[1] || idx[6] == idx[2] || idx[6] == idx[3] || idx[6] == idx[4] || idx[6] == idx[5])
                                 continue;
+                            if (n == 6)
+                            {
+                                count[n]++;
+                                for (int i = 0; i < n; i++)
+                                    arr6[count[n]][i] = idx[i + 1];
+                            }
                             for (idx[7] = 1; idx[7] <= n; idx[7]++)
                             {
 
                                 if (idx[7] == idx[1] || idx[7] == idx[2] || idx[7] == idx[3] || idx[7] == idx[4] || idx[7] == idx[5] || idx[7] == idx[6])
                                     continue;
 
-                                count[7]++;
+                                count[n]++;
                                 for (int i = 0; i < n; i++)
-                                    arr7[count[7]][i] = idx[i + 1];
+                                    arr7[count[n]][i] = idx[i + 1];
                                 // arr7[idx7][0] = idx[1];
                                 // arr7[idx7][1] = idx[2];
                                 // arr7[idx7][2] = idx[3];
@@ -56,7 +89,7 @@ void showAllPossible()
             }
         }
     }
-    cout << count[7] << endl;
+    cout << n << ": " << count[n] << endl;
 }
 
 int getJ(int list[], int n, int i)
@@ -133,7 +166,8 @@ int main(int argc, char *argv[])
         // bool hasAns = false;
 
         // find possible list by n
-        showAllPossible();
+        for (int i = 2; i <= 7; i++)
+            showAllPossible(i);
 
         // int currentCost = getCost(list, n);
         // if (currentCost == c)
