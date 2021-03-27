@@ -161,9 +161,12 @@ void showAllPossible(int n)
         cout << " n: " << n << " -----------";
         for (int i = 0; i < 1 * 2 * n + 1; i++)
         {
+            int c = getCost(arr3[i], n);
+            cost[n][c] = "";
             for (int j = 0; j < n; j++)
-                cout << arr3[i][j] << " ";
-            cout << " cost:" << getCost(arr3[i], n) << endl;
+                cost[n][c] += " " + to_string(arr3[i][j]);
+            cout
+                << cost[n][c] << endl;
         }
     }
     if (n == 4)
@@ -171,9 +174,12 @@ void showAllPossible(int n)
         cout << " n: " << n << " -----------";
         for (int i = 0; i < 1 * 2 * 3 * n + 1; i++)
         {
+            int c = getCost(arr4[i], n);
+            cost[n][c] = "";
             for (int j = 0; j < n; j++)
-                cout << arr4[i][j] << " ";
-            cout << " cost:" << getCost(arr4[i], n) << endl;
+                cost[n][c] += " " + to_string(arr4[i][j]);
+            cout << " -> n:" << n << " c:" << c << " = "
+                 << cost[n][c] << endl;
         }
     }
     cout
@@ -187,12 +193,6 @@ int main(int argc, char *argv[])
     {
         for (int j = 0; j < 1001; j++)
             cost[i][j] = "IMPOSSIBLE";
-    }
-
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 1001; j++)
-            cout << cost[i][j] << endl;
     }
 
     int t;
