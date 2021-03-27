@@ -4,13 +4,6 @@ using namespace std;
 
 int getJ(int list[], int n, int i)
 {
-
-    // cout << endl
-    //  << "-----------";
-    // for (int idx = 0; idx < n; idx++)
-    // cout << list[idx] << " ";
-    // cout << "\n from idex i= " << i << "to index " << n - 1 << endl;
-
     int j = i, min = list[i];
     for (int idx = i; idx <= n - 1; idx++)
     {
@@ -26,41 +19,31 @@ int getJ(int list[], int n, int i)
 
 int getCost(int list[], int n)
 {
-
     int cost = 0;
-
-    int newList[n];
+    int newList[n], previousList[n];
     for (int idx = 0; idx < n; idx++)
     {
         newList[idx] = list[idx];
+        previousList[idx] = list[idx];
     }
 
     for (int i = 0; i < n - 1; i++)
     {
         int j = getJ(newList, n, i);
-        // cout
-        // << "j: " << j << endl;
 
-        // reverse element from i -> j index
-        // cout << "\n ---> reverse i:" << i << " j: " << j << endl;
+        // reverse from index of i to j
         if (i != j)
         {
             for (int idx = i; idx <= j; idx++)
             {
-                newList[j - idx] = list[idx];
+                newList[j - idx] = previousList[idx];
+            }
+            for (int idx = 0; idx < n; idx++)
+            {
+                previousList[idx] = newList[n];
             }
         }
-        // keep newList to lattest list
-        for (int idx = 0; idx < n; idx++)
-        {
-            list[idx] = newList[n];
-        }
-        // cout << "\n =====> new list ";
-        // for (int idx = 0; idx < n; idx++)
-        // {
-        // cout << newList[idx] << " ";
-        // }
-        // cout << endl;
+
         cost += (j + 1) - (i + 1) + 1;
     }
 
