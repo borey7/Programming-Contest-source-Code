@@ -10,6 +10,7 @@ void showAllPossible()
     int n = 7;
     int arr7[1 * 2 * 3 * 4 * 5 * 6 * n + 1][n];
     int idx7 = 0;
+    int count[] = {0, 0, 0, 0, 0, 0, 0, 0};
     for (idx[1] = 1; idx[1] <= n; idx[1]++)
     {
         for (idx[2] = 1; idx[2] <= n; idx[2]++)
@@ -38,9 +39,9 @@ void showAllPossible()
                                 if (idx[7] == idx[1] || idx[7] == idx[2] || idx[7] == idx[3] || idx[7] == idx[4] || idx[7] == idx[5] || idx[7] == idx[6])
                                     continue;
 
-                                idx7++;
+                                count[7]++;
                                 for (int i = 0; i < n; i++)
-                                    arr7[idx7][i] = idx[i + 1];
+                                    arr7[count[7]][i] = idx[i + 1];
                                 // arr7[idx7][0] = idx[1];
                                 // arr7[idx7][1] = idx[2];
                                 // arr7[idx7][2] = idx[3];
@@ -55,7 +56,7 @@ void showAllPossible()
             }
         }
     }
-    cout << idx7 << endl;
+    cout << count[7] << endl;
 }
 
 int getJ(int list[], int n, int i)
