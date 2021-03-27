@@ -6,7 +6,7 @@ using namespace std;
 
 void showAllPossible()
 {
-    int arr7[5041][7];
+    int arr7[1 * 2 * 3 * 4 * 5 * 6 * 7 + 1][7];
     int idx7 = 0;
     for (int i1 = 1; i1 <= 7; i1++)
     {
