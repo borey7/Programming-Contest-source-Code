@@ -147,43 +147,64 @@ void showAllPossible(int n)
     }
     if (n == 2)
     {
-        cout << " n: " << n << " -----------";
         for (int i = 0; i < 1 * n + 1; i++)
         {
+            int c = getCost(arr2[i], n);
+            cost[n][c] = "";
             for (int j = 0; j < n; j++)
-                cout << arr2[i][j] << " ";
-
-            cout << " cost:" << getCost(arr2[i], n) << endl;
+                cost[n][c] += " " + to_string(arr2[i][j]);
         }
     }
     if (n == 3)
     {
-        cout << " n: " << n << " -----------";
         for (int i = 0; i < 1 * 2 * n + 1; i++)
         {
             int c = getCost(arr3[i], n);
             cost[n][c] = "";
             for (int j = 0; j < n; j++)
                 cost[n][c] += " " + to_string(arr3[i][j]);
-            cout
-                << cost[n][c] << endl;
         }
     }
     if (n == 4)
     {
-        cout << " n: " << n << " -----------";
         for (int i = 0; i < 1 * 2 * 3 * n + 1; i++)
         {
             int c = getCost(arr4[i], n);
             cost[n][c] = "";
             for (int j = 0; j < n; j++)
                 cost[n][c] += " " + to_string(arr4[i][j]);
-            cout << " -> n:" << n << " c:" << c << " = "
-                 << cost[n][c] << endl;
         }
     }
-    cout
-        << n << ": " << count[n] << endl;
+    if (n == 5)
+    {
+        for (int i = 0; i < 1 * 2 * 3 * 4 * n + 1; i++)
+        {
+            int c = getCost(arr5[i], n);
+            cost[n][c] = "";
+            for (int j = 0; j < n; j++)
+                cost[n][c] += " " + to_string(arr5[i][j]);
+        }
+    }
+    if (n == 6)
+    {
+        for (int i = 0; i < 1 * 2 * 3 * 4 * 5 * n + 1; i++)
+        {
+            int c = getCost(arr6[i], n);
+            cost[n][c] = "";
+            for (int j = 0; j < n; j++)
+                cost[n][c] += " " + to_string(arr6[i][j]);
+        }
+    }
+    if (n == 7)
+    {
+        for (int i = 0; i < 1 * 2 * 3 * 4 * 5 * 6 * n + 1; i++)
+        {
+            int c = getCost(arr7[i], n);
+            cost[n][c] = "";
+            for (int j = 0; j < n; j++)
+                cost[n][c] += " " + to_string(arr7[i][j]);
+        }
+    }
 }
 
 int main(int argc, char *argv[])
@@ -192,43 +213,21 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 1001; j++)
-            cost[i][j] = "IMPOSSIBLE";
+            cost[i][j] = " IMPOSSIBLE";
     }
+
+    // find possible list by n
+    for (int i = 2; i <= 7; i++)
+        showAllPossible(i);
 
     int t;
     cin >> t;
     for (int tcase = 1; tcase <= t; tcase++)
     {
 
-        // int n, c;
-        // cin >> n >> c;
-        // int answers[n];
-        // bool hasAns = false;
-
-        // find possible list by n
-        for (int i = 2; i <= 7; i++)
-            showAllPossible(i);
-
-        // int currentCost = getCost(list, n);
-        // if (currentCost == c)
-        // {
-        //     answers = list;]
-        //     hasAns = true;
-        //     break;
-        // }
-
-        // answer
-        // cout << "Case #" << tcase << ":";
-        // if (hasAns)
-        // {
-        //     for (int idx = 0; idx < n; idx++)
-        //         cout << " " << answers[idx];
-        // }
-        // else
-        // {
-        //     cout << " IMPOSSIBLE";
-        // }
-        // cout << endl;
+        int n, c;
+        cin >> n >> c;
+        cout << "Case #" << tcase << ":" << cost[n][c] << endl;
     }
 
     return 0;
