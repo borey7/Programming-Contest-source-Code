@@ -6,31 +6,32 @@ using namespace std;
 
 void showAllPossible()
 {
-    int arr7[1 * 2 * 3 * 4 * 5 * 6 * 7 + 1][7];
+    int n = 7;
+    int arr7[1 * 2 * 3 * 4 * 5 * 6 * n + 1][n];
     int idx7 = 0;
-    for (int i1 = 1; i1 <= 7; i1++)
+    for (int i1 = 1; i1 <= n; i1++)
     {
-        for (int i2 = 1; i2 <= 7; i2++)
+        for (int i2 = 1; i2 <= n; i2++)
         {
             if (i2 == i1)
                 continue;
-            for (int i3 = 1; i3 <= 7; i3++)
+            for (int i3 = 1; i3 <= n; i3++)
             {
                 if (i3 == i1 || i3 == i2)
                     continue;
-                for (int i4 = 1; i4 <= 7; i4++)
+                for (int i4 = 1; i4 <= n; i4++)
                 {
                     if (i4 == i1 || i4 == i2 || i4 == i3)
                         continue;
-                    for (int i5 = 1; i5 <= 7; i5++)
+                    for (int i5 = 1; i5 <= n; i5++)
                     {
                         if (i5 == i1 || i5 == i2 || i5 == i3 || i5 == i4)
                             continue;
-                        for (int i6 = 1; i6 <= 7; i6++)
+                        for (int i6 = 1; i6 <= n; i6++)
                         {
                             if (i6 == i1 || i6 == i2 || i6 == i3 || i6 == i4 || i6 == i5)
                                 continue;
-                            for (int i7 = 1; i7 <= 7; i7++)
+                            for (int i7 = 1; i7 <= n; i7++)
                             {
 
                                 if (i7 == i1 || i7 == i2 || i7 == i3 || i7 == i4 || i7 == i5 || i7 == i6)
