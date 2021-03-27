@@ -6,45 +6,48 @@ using namespace std;
 
 void showAllPossible()
 {
+    int idx[] = {0, 0, 0, 0, 0, 0, 0, 0};
     int n = 7;
     int arr7[1 * 2 * 3 * 4 * 5 * 6 * n + 1][n];
     int idx7 = 0;
-    for (int i1 = 1; i1 <= n; i1++)
+    for (idx[1] = 1; idx[1] <= n; idx[1]++)
     {
-        for (int i2 = 1; i2 <= n; i2++)
+        for (idx[2] = 1; idx[2] <= n; idx[2]++)
         {
-            if (i2 == i1)
+            if (idx[2] == idx[1])
                 continue;
-            for (int i3 = 1; i3 <= n; i3++)
+            for (idx[3] = 1; idx[3] <= n; idx[3]++)
             {
-                if (i3 == i1 || i3 == i2)
+                if (idx[3] == idx[1] || idx[3] == idx[2])
                     continue;
-                for (int i4 = 1; i4 <= n; i4++)
+                for (idx[4] = 1; idx[4] <= n; idx[4]++)
                 {
-                    if (i4 == i1 || i4 == i2 || i4 == i3)
+                    if (idx[4] == idx[1] || idx[4] == idx[2] || idx[4] == idx[3])
                         continue;
-                    for (int i5 = 1; i5 <= n; i5++)
+                    for (idx[5] = 1; idx[5] <= n; idx[5]++)
                     {
-                        if (i5 == i1 || i5 == i2 || i5 == i3 || i5 == i4)
+                        if (idx[5] == idx[1] || idx[5] == idx[2] || idx[5] == idx[3] || idx[5] == idx[4])
                             continue;
-                        for (int i6 = 1; i6 <= n; i6++)
+                        for (idx[6] = 1; idx[6] <= n; idx[6]++)
                         {
-                            if (i6 == i1 || i6 == i2 || i6 == i3 || i6 == i4 || i6 == i5)
+                            if (idx[6] == idx[1] || idx[6] == idx[2] || idx[6] == idx[3] || idx[6] == idx[4] || idx[6] == idx[5])
                                 continue;
-                            for (int i7 = 1; i7 <= n; i7++)
+                            for (idx[7] = 1; idx[7] <= n; idx[7]++)
                             {
 
-                                if (i7 == i1 || i7 == i2 || i7 == i3 || i7 == i4 || i7 == i5 || i7 == i6)
+                                if (idx[7] == idx[1] || idx[7] == idx[2] || idx[7] == idx[3] || idx[7] == idx[4] || idx[7] == idx[5] || idx[7] == idx[6])
                                     continue;
 
                                 idx7++;
-                                arr7[idx7][0] = i1;
-                                arr7[idx7][1] = i2;
-                                arr7[idx7][2] = i3;
-                                arr7[idx7][3] = i4;
-                                arr7[idx7][4] = i5;
-                                arr7[idx7][5] = i6;
-                                arr7[idx7][6] = i7;
+                                for (int i = 0; i < n; i++)
+                                    arr7[idx7][i] = idx[i + 1];
+                                // arr7[idx7][0] = idx[1];
+                                // arr7[idx7][1] = idx[2];
+                                // arr7[idx7][2] = idx[3];
+                                // arr7[idx7][3] = idx[4];
+                                // arr7[idx7][4] = idx[5];
+                                // arr7[idx7][5] = idx[6];
+                                // arr7[idx7][6] = idx[7];
                             }
                         }
                     }
