@@ -75,13 +75,6 @@ void showAllPossible(int n)
                                 count[n]++;
                                 for (int i = 0; i < n; i++)
                                     arr7[count[n]][i] = idx[i + 1];
-                                // arr7[idx7][0] = idx[1];
-                                // arr7[idx7][1] = idx[2];
-                                // arr7[idx7][2] = idx[3];
-                                // arr7[idx7][3] = idx[4];
-                                // arr7[idx7][4] = idx[5];
-                                // arr7[idx7][5] = idx[6];
-                                // arr7[idx7][6] = idx[7];
                             }
                         }
                     }
@@ -89,7 +82,38 @@ void showAllPossible(int n)
             }
         }
     }
-    cout << n << ": " << count[n] << endl;
+    if (n == 2)
+    {
+        cout << " n: " << n << " -----------";
+        for (int i = 0; i < 1 * n + 1; i++)
+        {
+            for (int j = 0; j < n; j++)
+                cout << arr2[i][j] << " ";
+            cout << endl;
+        }
+    }
+    if (n == 3)
+    {
+        cout << " n: " << n << " -----------";
+        for (int i = 0; i < 1 * n + 1; i++)
+        {
+            for (int j = 0; j < n; j++)
+                cout << arr3[i][j] << " ";
+            cout << endl;
+        }
+    }
+    if (n == 4)
+    {
+        cout << " n: " << n << " -----------";
+        for (int i = 0; i < 1 * n + 1; i++)
+        {
+            for (int j = 0; j < n; j++)
+                cout << arr4[i][j] << " ";
+            cout << endl;
+        }
+    }
+    cout
+        << n << ": " << count[n] << endl;
 }
 
 int getJ(int list[], int n, int i)
