@@ -4,6 +4,8 @@
 
 using namespace std;
 
+string cost[8][1001];
+
 int getJ(int list[], int n, int i)
 {
     int j = i, min = list[i];
@@ -180,6 +182,19 @@ void showAllPossible(int n)
 
 int main(int argc, char *argv[])
 {
+
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 1001; j++)
+            cost[i][j] = "IMPOSSIBLE";
+    }
+
+    for (int i = 0; i < 8; i++)
+    {
+        for (int j = 0; j < 1001; j++)
+            cout << cost[i][j] << endl;
+    }
+
     int t;
     cin >> t;
     for (int tcase = 1; tcase <= t; tcase++)
