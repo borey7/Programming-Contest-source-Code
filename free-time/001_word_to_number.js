@@ -17,18 +17,30 @@ const oneDigit = {
 
 const base = {
   hundred: 100,
+  thousand: 1000,
 };
 
 function cal(w) {
   const digits = w.split(" ");
 
-  return digits.reduce((result, d) => {
-    if (oneDigit[d]) {
-      return result + oneDigit[d];
+  let sub = [],
+    result = 0;
+
+  digits.forEach((d, i) => {
+    if (oneDigit[d] !== undefined) {
+      result = result + oneDigit[d];
+
+      if (i === digits.length - 1) {
+        sub.push(result);
+      }
     } else {
-      return result * base[d];
+      result = result * base[d];
+      sub.push(result);
+      result = 0;
     }
-  }, 0);
+  });
+
+  return sub.reduce((r, e) => r + e, 0);
 }
 
 function translate(w) {

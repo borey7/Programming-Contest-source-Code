@@ -41,3 +41,10 @@ test.each([
 ])("Four words - %s: %s", (w, n) => {
   expect(translate(w)).toBe(n);
 });
+
+test.each([
+  ["one thousand five hundred twenty", 1520],
+  // ["one thousand five hundred twenty one", 1521],
+])("Thousand - %s: %s", (w, n) => {
+  expect(translate(w)).toBe(n);
+});
